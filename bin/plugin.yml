@@ -1,0 +1,9 @@
+name: Apia_Lucky_Clover
+main: me.osoloturk.alc.ALC
+version: 1.0
+description: Lucky Clover Plugin
+authors: [oSoloTurk]
+website: 'https://mcdeyiz.com/'
+api-version: 1.13
+depend: [Vault]
+commands:
