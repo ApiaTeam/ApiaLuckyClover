@@ -19,7 +19,12 @@ public enum Config {
 	CLOVER_GAVE("GIVE_YOUR_CLOVER"),
 	SOUND("SOUND"),
 	REWARDS("REWARDS"),
-	SUCCESSFUL("SUCCESSFUL_MESSAGE");
+	SUCCESSFUL("SUCCESSFUL_MESSAGE"),
+	RELOAD("RELOAD_MESSAGE"),
+	PERM("PERM_ERROR"),
+	GAVE_MESSAGE("GAVE_CLOVER"),
+	PLAYER_ERROR("PLAYER_ERROR"),
+	HELP("HELP");
     
     private static FileConfiguration config;
     private final String path;    
