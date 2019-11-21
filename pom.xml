@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>me.bertek41</groupId>
+  <artifactId>ApiaLuckyClover</artifactId>
+  <version>1.0</version>
+  <name>ApiaLuckyClover</name>
+  <properties>
+    <downloadJavadocs>true</downloadJavadocs>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>8</maven.compiler.release>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<eclipse.workspace>C:/eclipse-workspace</eclipse.workspace>
+  </properties>
+  <build>
+	<finalName>${project.name}-${project.version}</finalName>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+     <resource>
+       <directory>resources</directory>
+     </resource>
+   </resources>
+    <plugins>
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <archive>
+			<manifestEntries>
+            	<Built-By>bertek41</Built-By>
+            </manifestEntries>
+            <addMavenDescriptor>false</addMavenDescriptor>
+          </archive>
+        </configuration>
+      </plugin>
+	<plugin>
+		<groupId>com.google.code.maven-replacer-plugin</groupId>
+		<artifactId>maven-replacer-plugin</artifactId>
+		<version>1.4.1</version>
+		<executions>
+			<execution>
+				<phase>prepare-package</phase>
+				<goals>
+					<goal>replace</goal>
+				</goals>
+			</execution>
+		</executions>
+		<configuration>
+			<file>target/classes/plugin.yml</file>
+			<replacements>
+				<replacement>
+					<token>maven.version</token>
+					<value>${project.version}</value>
+				</replacement>
+			</replacements>
+		</configuration>
+	</plugin>
+    </plugins>
+  </build>
+<repositories>
+    <repository>
+        <id>spigot-repo</id>
+        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+</repositories>
+<dependencies>
+    <dependency>
+           <groupId>org.spigotmc</groupId>
+           <artifactId>spigot-api</artifactId>
+           <version>1.14.4-R0.1-SNAPSHOT</version>
+           <scope>provided</scope>
+    </dependency>
+</dependencies>
+</project>

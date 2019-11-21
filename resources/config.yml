@@ -1,0 +1,14 @@
+Prefix: Apia Lucky Clover
+CLOVER:
+  MATERIAL: DOUBLE_PLANT
+  NAME: '&eLucky Clover'
+  LORE:
+  - '&7RightClick for Use'
+  CHANCE: 5
+
+INVENTORY_FULL: '&7Your inventory is full, clover dropped to the ground.'
+GIVE_YOUR_CLOVER: '&7You found a lucky clover in grass'
+SOUND: NOTE_PLING
+REWARDS:
+  - broadcast <PLAYER> use a CLOVER
+SUCCESSFUL_MESSAGE: '&7Your rewards was given.'

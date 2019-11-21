@@ -1,8 +1,8 @@
-name: Apia_Lucky_Clover
-main: me.osoloturk.alc.ALC
-version: 1.0
+name: ApiaLuckyClover
+main: me.bertek41.alc.ALC
+version: maven.version
 description: Lucky Clover Plugin
-authors: [oSoloTurk]
+authors: [oSoloTurk, bertek41]
 website: 'https://mcdeyiz.com/'
 api-version: 1.13
 depend: [Vault]

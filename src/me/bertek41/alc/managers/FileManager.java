@@ -1,14 +1,13 @@
-package me.osoloturk.alc.managers;
+package me.bertek41.alc.managers;
 
 import java.io.File;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import me.osoloturk.alc.ALC;
-import me.osoloturk.alc.misc.Config;
+import me.bertek41.alc.ALC;
+import me.bertek41.alc.misc.Config;
 
 public class FileManager {
-	
 	private ALC instance;	
     private File configFile;
     private FileConfiguration config;
@@ -26,9 +25,9 @@ public class FileManager {
 		config = new YamlConfiguration();
 		try {
 			config.load(configFile);
-			Config.setConfig(config);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Config.setConfig(config);
 	}
 }

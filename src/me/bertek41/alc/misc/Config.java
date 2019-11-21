@@ -1,4 +1,4 @@
-package me.osoloturk.alc.misc;
+package me.bertek41.alc.misc;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +16,10 @@ public enum Config {
 	LORE("CLOVER.LORE"),
 	CHANCE("CLOVER.CHANCE"),
 	SPACE_ERROR("INVENTORY_FULl"),
-	CLOVER_GIVE("GIVE_YOUR_CLOVER"),
+	CLOVER_GAVE("GIVE_YOUR_CLOVER"),
 	SOUND("SOUND"),
 	REWARDS("REWARDS"),
-	APPLY("SUCCESFULL-MESSAGE");
+	SUCCESSFUL("SUCCESSFUL_MESSAGE");
     
     private static FileConfiguration config;
     private final String path;    
