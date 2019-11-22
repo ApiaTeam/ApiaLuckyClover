@@ -7,6 +7,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -23,7 +24,7 @@ public class CloverOpenListener  implements Listener{
 	}
 	
 	@SuppressWarnings("deprecation")
-	@EventHandler
+	@EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled = true)
 	public void BlockBreak(PlayerInteractEvent event) {
 		if(!event.hasItem() || (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK)) return;
 		Player player = event.getPlayer();
@@ -39,7 +40,18 @@ public class CloverOpenListener  implements Listener{
 			if(instance.getNMSVersion().startsWith("v1_8_")) player.setItemInHand(item);
 			else player.getInventory().setItemInMainHand(item);
 			player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
-			player.playSound(player.getLocation(), Sound.valueOf(Config.SOUND.getString()), 3.0F, 0.5F);
+			String sound = Config.SOUND.getString();
+			if(instance.getNMSVersion().startsWith("v1_14") || instance.getNMSVersion().startsWith("v1_13")) {
+				sound = sound.replace("NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING");
+			}
+			try {
+				player.playSound(player.getLocation(), Sound.valueOf(sound), 3.0F, 0.5F);
+			} catch (IllegalArgumentException error) {
+				Bukkit.getConsoleSender().sendMessage("§8[ §6Apia Lucky Clover §8] §7-> §4Your  Sound is deprecated or wrong please edit.");
+				if(instance.getNMSVersion().startsWith("v1_14") || instance.getNMSVersion().startsWith("v1_13")) sound = "BLOCK_NOTE_BLOCK_PLING";
+				else sound = "NOTE_PLING";
+				player.playSound(player.getLocation(), Sound.valueOf(sound), 3.0F, 0.5F);
+			}
 			player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
 			String command = Config.REWARDS.getStringList().get(ThreadLocalRandom.current().nextInt(Config.REWARDS.getStringList().size()));
 	        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("<PLAYER>", player.getName()));

@@ -62,9 +62,7 @@ public enum Config {
     }
 
     public static void setConfig(FileConfiguration message) {
-        if(Config.config == null) {
-            Config.config = message;
-        }
+    	Config.config = message;
     }
 
     public Boolean getBoolean() {

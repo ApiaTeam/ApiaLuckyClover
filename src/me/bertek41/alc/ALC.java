@@ -34,7 +34,21 @@ public class ALC extends JavaPlugin {
 		//https://bstats.org/help/custom-charts
 		Config.setConfig(instance.getConfig());
         getCommand("alc").setExecutor(new AlcMainCommand(this));
-		clover = new ItemStack(Material.valueOf(Config.MATERIAL.getString()));
+        String materialName = Config.MATERIAL.getString();
+        if(nmsVersion.startsWith("v1_13") || nmsVersion.startsWith("v1_14")) {
+        	materialName = materialName.replace("DOUBLE_PLANT", "SUNFLOWER");
+        }        
+		try{
+			clover = new ItemStack(Material.valueOf(materialName));
+		} catch (IllegalArgumentException error) {
+			Bukkit.getConsoleSender().sendMessage("§8[ §6Apia Lucky Clover §8] §7-> §4Your  Material is deprecated or wrong please edit.");
+	        if(nmsVersion.startsWith("v1_13") || nmsVersion.startsWith("v1_14")) {
+	        	materialName = "SUNFLOWER";
+	        } else {
+	        	materialName = "DOUBLE_PLANT";
+	        }
+			clover = new ItemStack(Material.valueOf(materialName));
+		}		
 		ItemMeta itemMeta = clover.getItemMeta();
 		itemMeta.setDisplayName(Config.NAME.getString());
 		itemMeta.setLore(Config.LORE.getStringList());
