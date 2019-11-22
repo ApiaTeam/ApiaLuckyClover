@@ -23,17 +23,15 @@ public class BlockBreakListener implements Listener{
 	
 	@EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled = true)
 	public void BlockBreak(BlockBreakEvent event) {
-		if(event.getBlock().getType().toString().endsWith("GRASS")) {
-			if(!event.getPlayer().hasPermission("alc.user")) return;
-			if(ThreadLocalRandom.current().nextInt(101) <= Config.CHANCE.getInt()) {
-				Player player = event.getPlayer();
-				Map<Integer, ItemStack> returnedItems = player.getInventory().addItem(instance.getClover());
-				if(!returnedItems.isEmpty()) {
-					returnedItems.values().forEach(item -> player.getWorld().dropItemNaturally(player.getLocation(), item));
-					Config.sendMessage(player, Config.SPACE_ERROR.getString());
-				} else {
-					Config.sendMessage(player, Config.CLOVER_GAVE.getString());
-				}
+		if(!event.getBlock().getType().toString().endsWith("GRASS") || !event.getPlayer().hasPermission("alc.user")) return;
+		if(ThreadLocalRandom.current().nextInt(101) <= Config.CHANCE.getInt()) {
+			Player player = event.getPlayer();
+			Map<Integer, ItemStack> returnedItems = player.getInventory().addItem(instance.getClover());
+			if(!returnedItems.isEmpty()) {
+				returnedItems.values().forEach(item -> player.getWorld().dropItemNaturally(player.getLocation(), item));
+				Config.sendMessage(player, Config.SPACE_ERROR.getString());
+			} else {
+				Config.sendMessage(player, Config.CLOVER_GAVE.getString());
 			}
 		}
 	}

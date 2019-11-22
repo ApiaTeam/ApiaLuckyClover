@@ -2,7 +2,6 @@ package me.bertek41.alc;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,10 +19,6 @@ public class ALC extends JavaPlugin {
 	private ItemStack clover;
 	private FileManager fileManager;
 	
-	public static ALC getInstance() {
-		return instance;
-	}
-	
 	public void onEnable() {		
 		instance = this;
 		fileManager = new FileManager(this);
@@ -34,8 +29,9 @@ public class ALC extends JavaPlugin {
 				fileManager.createFiles();
 			}
 		});
-        Metrics metrics = new Metrics(this);
-        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
+		Metrics metrics = new Metrics(this);
+		metrics.addCustomChart(new Metrics.SimplePie("version", () -> getDescription().getVersion()));
+		//https://bstats.org/help/custom-charts
 		Config.setConfig(instance.getConfig());
         getCommand("alc").setExecutor(new AlcMainCommand(this));
 		clover = new ItemStack(Material.valueOf(Config.MATERIAL.getString()));
@@ -45,13 +41,17 @@ public class ALC extends JavaPlugin {
 		clover.setItemMeta(itemMeta);		
 		Bukkit.getPluginManager().registerEvents(new BlockBreakListener(this), this);
 		Bukkit.getPluginManager().registerEvents(new CloverOpenListener(this), this);
-		Bukkit.getConsoleSender().sendMessage("§6Apia Lucky Clover §aEnabled");
-		Bukkit.getConsoleSender().sendMessage("§6Created By §8[§4oSoloTurk§8]-§8[§4Bertek41§8]");
+		getServer().getConsoleSender().sendMessage("§6ApiaLuckyClover §aEnabled");
+		getServer().getConsoleSender().sendMessage("§6Created By §8[§4oSoloTurk§8]-§8[§4Bertek41§8]");
 	}
 	
 	public void onDisable() {
-		Bukkit.getConsoleSender().sendMessage("§6Apia Lucky Clover §5Enabled");
-		Bukkit.getConsoleSender().sendMessage("§6Created By §8[§4oSoloTurk§8]-§8[§4Bertek41§8]");
+		getServer().getConsoleSender().sendMessage("§6ApiaLuckyClover §5Disabled");
+		getServer().getConsoleSender().sendMessage("§6Created By §8[§4oSoloTurk§8]-§8[§4Bertek41§8]");
+	}
+	
+	public static ALC getInstance() {
+		return instance;
 	}
 	
 	public String getNMSVersion() {

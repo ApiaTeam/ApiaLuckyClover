@@ -1,26 +1,26 @@
-Prefix: '&8&l[ &6Apia Lucky Clover &8&l] &7&l»'
+Prefix: '&8&l[&6Apia Lucky Clover&8&l] &7&l»'
 CLOVER:
   MATERIAL: DOUBLE_PLANT
-  NAME: '&eLucky Clover'
+  NAME: '&eFour-Leaf Clover'
   LORE:
-   - '&7Right Click and Win Reward'
+   - '&7Right Click and Earn Reward'
    - ''
-   - '&aEarn what you can:'
+   - '&aPrizes:'
    - '&8&l»» &c1 &bDiamond &7(%&650&7)'
    - '&8&l»» &c2 &bDiamonds &7(%&650&7)'
   CHANCE: 5
 
 INVENTORY_FULL: '&7Your inventory is full, <AMOUNT> clover dropped to the ground.'
-GIVE_YOUR_CLOVER: '&7You found a lucky clover in grass'
+GIVE_YOUR_CLOVER: '&7You found a Four-Leaf Clover in grass'
 SOUND: NOTE_PLING
 REWARDS:
   - give <PLAYER> diamond 1
   - give <PLAYER> diamond 2
 SUCCESSFUL_MESSAGE: '&7Your rewards was given.'
-RELOAD_MESSAGE: '&7Apia Lucky Clover Reloaded.'
+RELOAD_MESSAGE: '&7ApiaLuckyClover reloaded.'
 PERM_ERROR: '&7You do not have permission for this command'
-GAVE_CLOVER: '&7You gave a clover to &6To: &a<PLAYER> &7&l| &6Amount: &a<AMOUNT>'
-PLAYER_ERROR: '&7We do not find this player &6Searched Player: &c<PLAYER>'
+GAVE_CLOVER: '&7You gave &e<AMOUNT> &7Four-Leaf Clover to &e<PLAYER>'
+PLAYER_ERROR: '&7Player <PLAYER> is invalid'
 HELP:
   - '&8&l»» &6/alc reload'
-  - '&8&l»» &6/alc give <PLAYER> <AMOUNT>'
+  - '&8&l»» &6/alc give <player> <amount>'

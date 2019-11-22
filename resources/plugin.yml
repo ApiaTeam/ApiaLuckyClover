@@ -5,9 +5,8 @@ description: Lucky Clover Plugin
 authors: [oSoloTurk, bertek41]
 website: 'https://mcdeyiz.com/'
 api-version: 1.13
-depend: [Vault]
 commands:
   alc:
-    description: Main Command of Apia Lucky Clover Plugin
-    aliases: [apialuckyclover]
-    permission: [alc.reload, alc.give]
+    description: Main command
+    aliases: [apialuckyclover, clover]
+    permission: alc.reload
