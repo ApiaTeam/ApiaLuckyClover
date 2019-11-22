@@ -10,7 +10,7 @@ CLOVER:
    - '&8&l»» &c2 &bDiamonds &7(%&650&7)'
   CHANCE: 5
 
-INVENTORY_FULL: '&7Your inventory is full, clover dropped to the ground.'
+INVENTORY_FULL: '&7Your inventory is full, <AMOUNT> clover dropped to the ground.'
 GIVE_YOUR_CLOVER: '&7You found a lucky clover in grass'
 SOUND: NOTE_PLING
 REWARDS:
@@ -19,7 +19,7 @@ REWARDS:
 SUCCESSFUL_MESSAGE: '&7Your rewards was given.'
 RELOAD_MESSAGE: '&7Apia Lucky Clover Reloaded.'
 PERM_ERROR: '&7You do not have permission for this command'
-GAVE_CLOVER: '&7You gave a clover to &6To: &a<PLAYER>'
+GAVE_CLOVER: '&7You gave a clover to &6To: &a<PLAYER> &7&l| &6Amount: &a<AMOUNT>'
 PLAYER_ERROR: '&7We do not find this player &6Searched Player: &c<PLAYER>'
 HELP:
   - '&8&l»» &6/alc reload'
