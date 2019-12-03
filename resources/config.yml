@@ -24,3 +24,4 @@ PLAYER_ERROR: '&7Player <PLAYER> is invalid'
 HELP:
   - '&8&l»» &6/alc reload'
   - '&8&l»» &6/alc give <player> <amount>'
+UPDATE: true

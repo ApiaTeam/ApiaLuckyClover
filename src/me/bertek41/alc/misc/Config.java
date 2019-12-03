@@ -24,7 +24,8 @@ public enum Config {
 	NO_PERM("PERM_ERROR"),
 	GAVE_MESSAGE("GAVE_CLOVER"),
 	PLAYER_ERROR("PLAYER_ERROR"),
-	HELP("HELP");
+	HELP("HELP"),
+	UPDATE("UPDATE");
     
     private static FileConfiguration config;
     private final String path;    

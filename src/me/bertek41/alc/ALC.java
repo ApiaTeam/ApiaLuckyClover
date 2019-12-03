@@ -11,7 +11,8 @@ import me.bertek41.alc.listeners.BlockBreakListener;
 import me.bertek41.alc.listeners.CloverOpenListener;
 import me.bertek41.alc.managers.FileManager;
 import me.bertek41.alc.misc.Config;
-import me.bertek41.alc.misc.Metrics;
+import me.bertek41.alc.misc.MetricsLite;
+import me.bertek41.updater.UpdateChecker;
 
 public class ALC extends JavaPlugin {
 	private static ALC instance;
@@ -29,9 +30,7 @@ public class ALC extends JavaPlugin {
 				fileManager.createFiles();
 			}
 		});
-		Metrics metrics = new Metrics(this);
-		metrics.addCustomChart(new Metrics.SimplePie("version", () -> getDescription().getVersion()));
-		//https://bstats.org/help/custom-charts
+		new MetricsLite(this);
 		Config.setConfig(instance.getConfig());
         getCommand("alc").setExecutor(new AlcMainCommand(this));
         String materialName = Config.MATERIAL.getString();
@@ -57,6 +56,14 @@ public class ALC extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new CloverOpenListener(this), this);
 		getServer().getConsoleSender().sendMessage("§6ApiaLuckyClover §aEnabled");
 		getServer().getConsoleSender().sendMessage("§6Created By §8[§4oSoloTurk§8]-§8[§4Bertek41§8]");
+		if(Config.UPDATE.getBoolean() != true) return;
+        new UpdateChecker(this, 72928).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                Bukkit.getConsoleSender().sendMessage("§4[ §EUPDATE§4 §7§L| §5ALC ] §7 - §4There is not a new update available.");
+            } else {
+            	Bukkit.getConsoleSender().sendMessage("§4[ §EUPDATE§4 §7§L| §5ALC ] §7 - §4There is a new update available: "+ version);
+            }
+        });
 	}
 	
 	public void onDisable() {
