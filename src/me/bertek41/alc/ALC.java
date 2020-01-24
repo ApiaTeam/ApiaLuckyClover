@@ -34,14 +34,14 @@ public class ALC extends JavaPlugin {
 		Config.setConfig(instance.getConfig());
         getCommand("alc").setExecutor(new AlcMainCommand(this));
         String materialName = Config.MATERIAL.getString();
-        if(nmsVersion.startsWith("v1_13") || nmsVersion.startsWith("v1_14")) {
+        if(getMethodType().equals("NEW")) {
         	materialName = materialName.replace("DOUBLE_PLANT", "SUNFLOWER");
         }        
 		try{
 			clover = new ItemStack(Material.valueOf(materialName));
 		} catch (IllegalArgumentException error) {
 			Bukkit.getConsoleSender().sendMessage("§8[ §6Apia Lucky Clover §8] §7-> §4Your  Material is deprecated or wrong please edit.");
-	        if(nmsVersion.startsWith("v1_13") || nmsVersion.startsWith("v1_14")) {
+	        if(getMethodType().equals("NEW")) {
 	        	materialName = "SUNFLOWER";
 	        } else {
 	        	materialName = "DOUBLE_PLANT";
@@ -82,5 +82,10 @@ public class ALC extends JavaPlugin {
 	public ItemStack getClover() {
 		return clover;
 	}
-	
+    
+	public String getMethodType() {
+		if(Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.9") || Bukkit.getVersion().contains("1.10") || Bukkit.getVersion().contains("1.11") || Bukkit.getVersion().contains("1.12")) return "LEGACY";
+		else return "NEW";
+    }
+    
 }

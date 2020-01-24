@@ -34,21 +34,20 @@ public class CloverOpenListener  implements Listener{
 		if(item == null || item.getItemMeta() == null) return;
 		if(item.isSimilar(instance.getClover())) {
 			event.setCancelled(true);
-			item.setAmount(item.getAmount() - 1);
 			if(item.getAmount() > 1) item.setAmount(item.getAmount()-1);
 			else item = null;
 			if(instance.getNMSVersion().startsWith("v1_8_")) player.setItemInHand(item);
 			else player.getInventory().setItemInMainHand(item);
 			player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
 			String sound = Config.SOUND.getString();
-			if(instance.getNMSVersion().startsWith("v1_14") || instance.getNMSVersion().startsWith("v1_13")) {
+	        if(instance.getMethodType().equals("NEW")) {
 				sound = sound.replace("NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING");
 			}
 			try {
 				player.playSound(player.getLocation(), Sound.valueOf(sound), 3.0F, 0.5F);
 			} catch (IllegalArgumentException error) {
 				Bukkit.getConsoleSender().sendMessage("§8[ §6Apia Lucky Clover §8] §7-> §4Your  Sound is deprecated or wrong please edit.");
-				if(instance.getNMSVersion().startsWith("v1_14") || instance.getNMSVersion().startsWith("v1_13")) sound = "BLOCK_NOTE_BLOCK_PLING";
+		        if(instance.getMethodType().equals("NEW")) sound = "BLOCK_NOTE_BLOCK_PLING";
 				else sound = "NOTE_PLING";
 				player.playSound(player.getLocation(), Sound.valueOf(sound), 3.0F, 0.5F);
 			}
