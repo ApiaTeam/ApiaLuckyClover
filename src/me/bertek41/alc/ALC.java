@@ -94,13 +94,13 @@ public class ALC extends JavaPlugin {
 	
 	public void hookSoftDepends() {
 		if(instance.getConfig().getBoolean("APIAJACKPOT_REWARD.ENABLED") && (Bukkit.getPluginManager().getPlugin("ApiaJackpot") != null && Bukkit.getPluginManager().getPlugin("ApiaJackpot").isEnabled())) {
-			Bukkit.getConsoleSender().sendMessage("§eApiaJackpot Hooked by ApiaLuckyClover!");
+			Bukkit.getLogger().info("Hooked ApiaJackpot!");
 			apiaJackpot = true;
 			chanceJackpot = instance.getConfig().getInt("APIAJACKPOT_REWARD.CHANCE");
 			moneyJackpot = instance.getConfig().getDouble("APIAJACKPOT_REWARD.MONEY");
 		}
 		if(instance.getConfig().getBoolean("APIAENVOY_REWARD.ENABLED") && (Bukkit.getPluginManager().getPlugin("ApiaEnvoy") != null && Bukkit.getPluginManager().getPlugin("ApiaEnvoy").isEnabled())) {
-			Bukkit.getConsoleSender().sendMessage("§eApiaEnvoy Hooked by ApiaLuckyClover!");
+			Bukkit.getLogger().info("Hooked ApiaEnvoy!");
 			apiaEnvoy = true;
 			chanceEnvoy = instance.getConfig().getInt("APIAENVOY_REWARD.CHANCE");
 		}

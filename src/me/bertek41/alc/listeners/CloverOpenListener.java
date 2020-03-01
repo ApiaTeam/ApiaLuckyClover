@@ -40,7 +40,7 @@ public class CloverOpenListener  implements Listener{
 			else player.getInventory().setItemInMainHand(item);
 			player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
 			if(instance.getApiaJackpot() && ThreadLocalRandom.current().nextInt(100) <= instance.getJackpotChance()) Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "aj freejoin " + player.getName() + " " + instance.getJackpotMoney());
-			if(instance.getApiaEnvoy() && ThreadLocalRandom.current().nextInt(100) <= instance.getEnvoyChance()) Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae envoy " + player.getName());
+			if(instance.getApiaEnvoy() && ThreadLocalRandom.current().nextInt(100) <= instance.getEnvoyChance()) Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "apiaenvoy envoy " + player.getName());
 			String sound = Config.SOUND.getString();
 	        if(instance.getMethodType().equals("NEW")) {
 				sound = sound.replace("NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING");
