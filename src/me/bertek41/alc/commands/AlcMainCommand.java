@@ -31,6 +31,7 @@ public class AlcMainCommand implements CommandExecutor {
 				instance.reloadConfig();
 	            Config.setConfig(instance.getConfig());
 				Config.sendMessage(sender, Config.RELOAD.getString());
+				instance.hookSoftDepends();
 				return true;
 			}else {
 				Config.sendMessage(sender, Config.NO_PERM.getString());;

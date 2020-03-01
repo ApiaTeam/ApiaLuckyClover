@@ -16,6 +16,13 @@ SOUND: NOTE_PLING
 REWARDS:
   - give <PLAYER> diamond 1
   - give <PLAYER> diamond 2
+APIAJACKPOT_REWARD:
+  ENABLED: true
+  MONEY: 100000
+  CHANCE: 10
+APIAENVOY_REWARD: 
+  ENABLED: true
+  CHANCE: 10
 SUCCESSFUL_MESSAGE: '&7Your rewards was given.'
 RELOAD_MESSAGE: '&7ApiaLuckyClover reloaded.'
 PERM_ERROR: '&7You do not have permission for this command'

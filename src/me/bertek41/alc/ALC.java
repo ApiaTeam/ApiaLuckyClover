@@ -19,6 +19,9 @@ public class ALC extends JavaPlugin {
 	private String nmsVersion;
 	private ItemStack clover;
 	private FileManager fileManager;
+	private boolean apiaJackpot, apiaEnvoy;
+	private int chanceJackpot, chanceEnvoy;
+	private double moneyJackpot;
 	
 	public void onEnable() {		
 		instance = this;
@@ -31,6 +34,7 @@ public class ALC extends JavaPlugin {
 			}
 		});
 		new MetricsLite(this);
+		hookSoftDepends();
 		Config.setConfig(instance.getConfig());
         getCommand("alc").setExecutor(new AlcMainCommand(this));
         String materialName = Config.MATERIAL.getString();
@@ -87,5 +91,46 @@ public class ALC extends JavaPlugin {
 		if(Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.9") || Bukkit.getVersion().contains("1.10") || Bukkit.getVersion().contains("1.11") || Bukkit.getVersion().contains("1.12")) return "LEGACY";
 		else return "NEW";
     }
-    
+	
+	public void hookSoftDepends() {
+		if(instance.getConfig().getBoolean("APIAJACKPOT_REWARD.ENABLED") || (Bukkit.getPluginManager().getPlugin("ApiaJackpot") != null && Bukkit.getPluginManager().getPlugin("ApiaJackpot").isEnabled())) {
+			Bukkit.getConsoleSender().sendMessage("§eApiaJackpot Hooked by ApiaLuckyClover!");
+			apiaJackpot = true;
+			chanceJackpot = instance.getConfig().getInt("APIAJACKPOT_REWARD.CHANCE");
+			moneyJackpot = instance.getConfig().getDouble("APIAJACKPOT_REWARD.MONEY");
+		}
+		if(instance.getConfig().getBoolean("APIAENVOY_REWARD.ENABLED") || (Bukkit.getPluginManager().getPlugin("ApiaEnvoy") != null && Bukkit.getPluginManager().getPlugin("ApiaEnvoy").isEnabled())) {
+			Bukkit.getConsoleSender().sendMessage("§eApiaEnvoy Hooked by ApiaLuckyClover!");
+			apiaEnvoy = true;
+			chanceEnvoy = instance.getConfig().getInt("APIAENVOY_REWARD.CHANCE");
+		}
+	}
+
+	public boolean getApiaJackpot() {
+		return apiaJackpot;
+	}
+
+	public void setApiaJackpot(boolean apiaJackpot) {
+		this.apiaJackpot = apiaJackpot;
+	}
+
+	public boolean getApiaEnvoy() {
+		return apiaEnvoy;
+	}
+
+	public void setApiaEnvoy(boolean apiaEnvoy) {
+		this.apiaEnvoy = apiaEnvoy;
+	}
+	
+	public Double getJackpotMoney() {
+		return moneyJackpot;
+	}
+	
+	public int getJackpotChance() {
+		return chanceJackpot;
+	}
+	
+	public int getEnvoyChance() {
+		return chanceEnvoy;
+	}
 }

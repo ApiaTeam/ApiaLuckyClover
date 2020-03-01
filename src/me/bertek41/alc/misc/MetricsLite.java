@@ -3,6 +3,9 @@ package me.bertek41.alc.misc;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import me.bertek41.alc.ALC;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -229,6 +232,8 @@ public class MetricsLite {
         data.addProperty("osArch", osArch);
         data.addProperty("osVersion", osVersion);
         data.addProperty("coreCount", coreCount);
+        data.addProperty("apiaJackpotUse", ALC.getInstance().getApiaJackpot());
+        data.addProperty("apiaEnvoyUse", ALC.getInstance().getApiaEnvoy());
 
         return data;
     }

@@ -5,6 +5,7 @@ description: Lucky Clover Plugin
 authors: [oSoloTurk, bertek41]
 website: 'https://mcdeyiz.com/'
 api-version: 1.13
+softdepend: [ApiaEnvoy, ApiaJackpot]
 commands:
   alc:
     description: Main command
